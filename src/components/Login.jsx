@@ -1,11 +1,24 @@
 import { FaLanguage } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { axiosPublic } from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
-  const submitLogin = (data) => {
+  const submitLogin = async (data) => {
     console.log(data);
+    const user = {
+      email: data.email,
+      password: data.password,
+    };
+    await axiosPublic.post("/login", user).then((res) => {
+      //   console.log(res.data);
+      if (res.data.status === "success") {
+        Swal.fire("Successfully logged in!");
+      }
+    });
   };
 
   return (
@@ -60,12 +73,12 @@ const Login = () => {
           Don&apos;t have an account?{" "}
         </span>
 
-        <a
-          href="#"
+        <Link
+          to={"/register"}
           className="mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline"
         >
           Register
-        </a>
+        </Link>
       </div>
     </div>
   );
