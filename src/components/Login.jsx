@@ -14,10 +14,11 @@ const Login = () => {
       password: data.password,
     };
     await axiosPublic.post("/login", user).then((res) => {
-      //   console.log(res.data);
+      console.log(res.data);
       if (res.data.status === "success") {
         Swal.fire("Successfully logged in!");
       }
+      localStorage.setItem("token", res.data.token);
     });
   };
 
