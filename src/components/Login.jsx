@@ -26,6 +26,9 @@ const Login = () => {
         Swal.fire("Successfully logged in!");
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("role", res.data.userData.role);
+        localStorage.setItem("name", res.data.userData.name);
+        localStorage.setItem("email", res.data.userData.email);
+        localStorage.setItem("image", res.data.userData.image);
         setUser(res.data);
       } else {
         Swal.fire("Invalid credentials");
