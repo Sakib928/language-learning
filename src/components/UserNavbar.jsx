@@ -13,10 +13,10 @@ const UserNavbar = () => {
         </NavLink>
 
         <NavLink
-          to="/view-vocabularies"
+          to="/tutorials"
           className="text-gray-800 transition-colors duration-300 transform border-b-2 border-blue-500 mx-1.5 sm:mx-6 p-2 rounded-lg"
         >
-          Vocabularies
+          Tutorials
         </NavLink>
       </div>
     </nav>

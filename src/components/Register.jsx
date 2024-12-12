@@ -5,10 +5,11 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { BiSolidHide } from "react-icons/bi";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const imgbb_api = import.meta.env.VITE_IMAGE_KEY;
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -42,6 +43,7 @@ const Login = () => {
           }
           if (res.data.insertedId) {
             Swal.fire("Successfully registered!");
+            navigate("/login");
           }
         });
       });

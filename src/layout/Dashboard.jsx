@@ -16,6 +16,11 @@ const Dashboard = () => {
     setIsOpen(!isOpen);
   };
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <>
       <button
@@ -103,6 +108,12 @@ const Dashboard = () => {
                     Vocabulary Management
                   </span>
                 </NavLink>
+                <button
+                  onClick={logout}
+                  className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors  rounded-lg hover:bg-blue-400 hover:text-gray-700"
+                >
+                  <span className="mx-4 font-medium text-red-500">Log Out</span>
+                </button>
               </nav>
             </div>
           </aside>

@@ -6,8 +6,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [reload, setReload] = useState(false);
   const logout = () => {
-    setUser({});
-    localStorage.clear("token");
+    localStorage.clear();
+    window.location.reload();
   };
 
   const authInfo = {

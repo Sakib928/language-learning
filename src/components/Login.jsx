@@ -2,13 +2,14 @@ import { FaEye, FaLanguage } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { axiosPublic } from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { BiSolidHide } from "react-icons/bi";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const { setUser } = useAuth();
   const [passState, setPassState] = useState(false);
   const handleShowPass = () => {
@@ -30,6 +31,11 @@ const Login = () => {
         localStorage.setItem("email", res.data.userData.email);
         localStorage.setItem("image", res.data.userData.image);
         setUser(res.data);
+        if (res.data.userData.role === "admin") {
+          navigate("/dashboard/lessons");
+        } else {
+          navigate("/view-lessons");
+        }
       } else {
         Swal.fire("Invalid credentials");
         setUser({});

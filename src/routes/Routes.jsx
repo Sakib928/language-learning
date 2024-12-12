@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../layout/Main";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Dashboard from "../layout/Dashboard";
@@ -10,13 +9,19 @@ import ManageUsers from "../components/ManageUsers";
 import ManageLessons from "../components/ManageLessons";
 import ManageVocabs from "../components/ManageVocabs";
 import ViewLessons from "../pages/ViewLessons";
-import ViewVocabularies from "../pages/ViewVocabularies";
 import LessonDetails from "../components/LessonDetails";
+import Tutorials from "../pages/Tutorials";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: (
+      <PrivateRoute>
+        <ViewLessons></ViewLessons>
+      </PrivateRoute>
+    ),
     errorElement: <h1>Something went wrong</h1>,
   },
   {
@@ -29,43 +34,83 @@ export const router = createBrowserRouter([
   },
   {
     path: "/view-lessons",
-    element: <ViewLessons />,
+    element: (
+      <PrivateRoute>
+        <ViewLessons />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/view-lessons/lessondetails/:id",
-    element: <LessonDetails />,
+    element: (
+      <PrivateRoute>
+        <LessonDetails />
+      </PrivateRoute>
+    ),
   },
   {
-    path: "view-vocabularies",
-    element: <ViewVocabularies />,
+    path: "tutorials",
+    element: (
+      <PrivateRoute>
+        <Tutorials />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <AdminRoute>
+        <Dashboard />
+      </AdminRoute>
+    ),
     children: [
       {
         path: "lessons",
-        element: <Lessons />,
+        element: (
+          <AdminRoute>
+            <Lessons />
+          </AdminRoute>
+        ),
       },
       {
         path: "addlessons",
-        element: <AddLessons />,
+        element: (
+          <AdminRoute>
+            <AddLessons />
+          </AdminRoute>
+        ),
       },
       {
         path: "addvocabs",
-        element: <AddVocabs />,
+        element: (
+          <AdminRoute>
+            <AddVocabs />
+          </AdminRoute>
+        ),
       },
       {
         path: "manageusers",
-        element: <ManageUsers />,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "managelessons",
-        element: <ManageLessons />,
+        element: (
+          <AdminRoute>
+            <ManageLessons />
+          </AdminRoute>
+        ),
       },
       {
         path: "managevocabs",
-        element: <ManageVocabs />,
+        element: (
+          <AdminRoute>
+            <ManageVocabs />
+          </AdminRoute>
+        ),
       },
     ],
   },
