@@ -1,6 +1,6 @@
 const AdminLessonCard = ({ lesson, lessons }) => {
   const { lessonNumber, lessonTitle } = lesson;
-  console.log(lessons);
+  //   console.log(lessons);
 
   return (
     <div className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md mb-4">

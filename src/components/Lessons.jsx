@@ -10,7 +10,7 @@ const Lessons = () => {
       return res.data;
     },
   });
-  console.log(lessons);
+  // console.log(lessons);
   return (
     <>
       {lessons.map((lesson) => {

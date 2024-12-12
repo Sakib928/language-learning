@@ -12,7 +12,7 @@ const ViewLessons = () => {
       return res.data;
     },
   });
-  console.log(lessons);
+  //   console.log(lessons);
   return (
     <div>
       <CommonNav />

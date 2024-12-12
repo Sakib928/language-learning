@@ -53,9 +53,9 @@ const ManageVocabs = () => {
     });
 
     if (formValues) {
-      console.log("User added:", formValues);
+      // console.log("User added:", formValues);
       const res = await axiosSecure.patch(`/vocabularies/${_id}`, formValues);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.modifiedCount) {
         Swal.fire("Updated the vocabularies");
         refetch();
@@ -89,7 +89,7 @@ const ManageVocabs = () => {
   };
 
   const handleSearch = () => {
-    console.log("Searching for:", searchTerm);
+    // console.log("Searching for:", searchTerm);
   };
 
   return (

@@ -11,7 +11,7 @@ const ManageLessons = () => {
       return res.data;
     },
   });
-  console.log(lessons);
+  // console.log(lessons);
 
   const handleUpdate = async (_id) => {
     const { value: formValues } = await Swal.fire({
@@ -35,9 +35,9 @@ const ManageLessons = () => {
     });
 
     if (formValues) {
-      console.log("User added:", formValues);
+      // console.log("User added:", formValues);
       const res = await axiosSecure.patch(`/lessons/${_id}`, formValues);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.modifiedCount) {
         Swal.fire("Lesson Updated");
         refetch();
@@ -57,7 +57,7 @@ const ManageLessons = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/lessons/${_id}`);
-        console.log(res);
+        // console.log(res);
         if (res.data.deletedCount) {
           Swal.fire({
             title: "Deleted!",

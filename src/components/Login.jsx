@@ -16,13 +16,13 @@ const Login = () => {
     setPassState(!passState);
   };
   const submitLogin = async (data) => {
-    console.log(data);
+    // console.log(data);
     const user = {
       email: data.email,
       password: data.password,
     };
     await axiosPublic.post("/login", user).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.status === "success") {
         Swal.fire("Successfully logged in!");
         localStorage.setItem("token", res.data.token);

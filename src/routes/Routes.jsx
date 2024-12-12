@@ -39,6 +39,7 @@ export const router = createBrowserRouter([
         <ViewLessons />
       </PrivateRoute>
     ),
+    errorElement: <h1>Something went wrong</h1>,
   },
   {
     path: "/view-lessons/lessondetails/:id",
@@ -47,6 +48,7 @@ export const router = createBrowserRouter([
         <LessonDetails />
       </PrivateRoute>
     ),
+    errorElement: <h1>Something went wrong</h1>,
   },
   {
     path: "tutorials",
@@ -55,6 +57,7 @@ export const router = createBrowserRouter([
         <Tutorials />
       </PrivateRoute>
     ),
+    errorElement: <h1>Something went wrong</h1>,
   },
   {
     path: "/dashboard",
@@ -63,6 +66,7 @@ export const router = createBrowserRouter([
         <Dashboard />
       </AdminRoute>
     ),
+    errorElement: <h1>Something went wrong</h1>,
     children: [
       {
         path: "lessons",
@@ -71,6 +75,7 @@ export const router = createBrowserRouter([
             <Lessons />
           </AdminRoute>
         ),
+        errorElement: <h1>Something went wrong</h1>,
       },
       {
         path: "addlessons",
@@ -79,6 +84,7 @@ export const router = createBrowserRouter([
             <AddLessons />
           </AdminRoute>
         ),
+        errorElement: <h1>Something went wrong</h1>,
       },
       {
         path: "addvocabs",
@@ -87,6 +93,7 @@ export const router = createBrowserRouter([
             <AddVocabs />
           </AdminRoute>
         ),
+        errorElement: <h1>Something went wrong</h1>,
       },
       {
         path: "manageusers",
@@ -95,6 +102,7 @@ export const router = createBrowserRouter([
             <ManageUsers />
           </AdminRoute>
         ),
+        errorElement: <h1>Something went wrong</h1>,
       },
       {
         path: "managelessons",
@@ -103,6 +111,7 @@ export const router = createBrowserRouter([
             <ManageLessons />
           </AdminRoute>
         ),
+        errorElement: <h1>Something went wrong</h1>,
       },
       {
         path: "managevocabs",
@@ -111,6 +120,7 @@ export const router = createBrowserRouter([
             <ManageVocabs />
           </AdminRoute>
         ),
+        errorElement: <h1>Something went wrong</h1>,
       },
     ],
   },

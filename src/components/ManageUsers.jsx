@@ -11,7 +11,7 @@ const ManageUsers = () => {
       return res.data;
     },
   });
-  console.log(users);
+  // console.log(users);
 
   const changeRole = async (email, role) => {
     const res = await axiosSecure.patch(`/users/${email}/${role}`);

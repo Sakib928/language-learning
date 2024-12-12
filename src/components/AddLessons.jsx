@@ -12,9 +12,9 @@ const AddLessons = () => {
   const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await axiosSecure.post("/addlessons", data).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.insertedId) {
         Swal.fire("Lesson added");
       }

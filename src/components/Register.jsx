@@ -36,7 +36,7 @@ const Login = () => {
           role: "general",
         };
         axiosPublic.post("/users", user).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data?.status === "duplicate") {
             Swal.fire("There is already an account");
             return;
