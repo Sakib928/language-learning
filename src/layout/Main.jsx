@@ -1,5 +1,9 @@
+import AdminNavbar from "../components/AdminNavbar";
+import UserNavbar from "../components/UserNavbar";
+
 const Main = () => {
-  return <div className="text-4xl font-bold">main part of the layout</div>;
+  const role = localStorage.getItem("role");
+  return <>{role === "admin" ? <AdminNavbar /> : <UserNavbar />}</>;
 };
 
 export default Main;

@@ -2,6 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import Dashboard from "../layout/Dashboard";
+import Lessons from "../components/Lessons";
+import AddLessons from "../components/AddLessons";
+import AddVocabs from "../components/AddVocabs";
+import ManageUsers from "../components/ManageUsers";
+import ManageLessons from "../components/ManageLessons";
+import ManageVocabs from "../components/ManageVocabs";
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +21,37 @@ export const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "login",
+    path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "lessons",
+        element: <Lessons />,
+      },
+      {
+        path: "addlessons",
+        element: <AddLessons />,
+      },
+      {
+        path: "addvocabs",
+        element: <AddVocabs />,
+      },
+      {
+        path: "manageusers",
+        element: <ManageUsers />,
+      },
+      {
+        path: "managelessons",
+        element: <ManageLessons />,
+      },
+      {
+        path: "managevocabs",
+        element: <ManageVocabs />,
+      },
+    ],
   },
 ]);

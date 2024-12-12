@@ -1,12 +1,19 @@
-import { FaLanguage } from "react-icons/fa";
+import { FaEye, FaLanguage } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { axiosPublic } from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { BiSolidHide } from "react-icons/bi";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-
+  const { setUser } = useAuth();
+  const [passState, setPassState] = useState(false);
+  const handleShowPass = () => {
+    setPassState(!passState);
+  };
   const submitLogin = async (data) => {
     console.log(data);
     const user = {
@@ -17,8 +24,13 @@ const Login = () => {
       console.log(res.data);
       if (res.data.status === "success") {
         Swal.fire("Successfully logged in!");
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("role", res.data.userData.role);
+        setUser(res.data);
+      } else {
+        Swal.fire("Invalid credentials");
+        setUser({});
       }
-      localStorage.setItem("token", res.data.token);
     });
   };
 
@@ -41,7 +53,7 @@ const Login = () => {
           <div className="w-full mt-4">
             <input
               {...register("email", { required: true })}
-              className="block w-full px-4 py-2 mt-2 text-gray-200 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+              className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg pl-5 pr-11 rtl:pr-5 rtl:pl-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               type="email"
               placeholder="Email Address"
               aria-label="Email Address"
@@ -49,13 +61,21 @@ const Login = () => {
           </div>
 
           <div className="w-full mt-4">
-            <input
-              {...register("password", { required: true })}
-              className="block w-full px-4 py-2 mt-2 text-gray-200 placeholder-gray-500 bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
-              type="password"
-              placeholder="Password"
-              aria-label="Password"
-            />
+            <div className="relative flex items-center mt-2">
+              <button
+                onClick={handleShowPass}
+                className="absolute right-3 focus:outline-none rtl:left-0 rtl:right-auto text-white"
+              >
+                {!passState ? <FaEye /> : <BiSolidHide />}
+              </button>
+
+              <input
+                {...register("password", { required: true })}
+                type={passState ? "text" : "password"}
+                placeholder="********"
+                className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg pl-5 pr-11 rtl:pr-5 rtl:pl-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+            </div>
           </div>
 
           <div className="flex items-center justify-center mt-4">
