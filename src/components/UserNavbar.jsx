@@ -1,52 +1,23 @@
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { NavLink } from "react-router-dom";
 
 const UserNavbar = () => {
   return (
     <nav className="bg-transparent shadow">
       {" "}
-      {/* Transparent background without dark mode */}
       <div className="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize">
-        <Link
-          to="/"
+        <NavLink
+          to="/view-lessons"
           className="text-gray-800 transition-colors duration-300 transform border-b-2 border-blue-500 mx-1.5 sm:mx-6"
         >
-          home
-        </Link>
+          Lessons
+        </NavLink>
 
-        <Link
-          to="/features"
-          className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6"
+        <NavLink
+          to="/view-vocabularies"
+          className="text-gray-800 transition-colors duration-300 transform border-b-2 border-blue-500 mx-1.5 sm:mx-6 p-2 rounded-lg"
         >
-          features
-        </Link>
-
-        <Link
-          to="/pricing"
-          className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6"
-        >
-          pricing
-        </Link>
-
-        <Link
-          to="/blog"
-          className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6"
-        >
-          blog
-        </Link>
-
-        <a
-          href="#"
-          className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6"
-        >
-          {/* Placeholder for icon or additional content */}
-        </a>
-
-        <a
-          href="#"
-          className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6"
-        >
-          {/* Placeholder for icon or additional content */}
-        </a>
+          Vocabularies
+        </NavLink>
       </div>
     </nav>
   );
