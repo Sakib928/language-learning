@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Footer from "./Footer";
 
 const Lessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -12,19 +13,19 @@ const Lessons = () => {
   });
   // console.log(lessons);
   return (
-    <>
+    <div>
       {lessons.map((lesson) => {
         return (
           <div
             key={lesson._id}
-            className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md mb-4"
+            className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md mb-4 border-3"
           >
             <div className="flex items-center justify-between">
               <span className="text-sm font-light text-gray-800">
                 Lesson Number : {lesson?.lessonNumber}
               </span>
               <span className="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full">
-                Words Count:{lesson.vocabulariesFound}
+                Words Count: {lesson.vocabulariesFound}
               </span>
             </div>
 
@@ -36,7 +37,8 @@ const Lessons = () => {
           </div>
         );
       })}
-    </>
+      <Footer />
+    </div>
   );
 };
 
