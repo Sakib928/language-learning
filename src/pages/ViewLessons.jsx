@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "react-query";
 import CommonNav from "../components/CommonNav";
+import Footer from "../components/Footer";
 
 const ViewLessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -40,6 +41,7 @@ const ViewLessons = () => {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 };

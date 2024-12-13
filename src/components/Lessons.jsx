@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import Footer from "./Footer";
 
 const Lessons = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,7 +36,6 @@ const Lessons = () => {
           </div>
         );
       })}
-      <Footer />
     </div>
   );
 };
